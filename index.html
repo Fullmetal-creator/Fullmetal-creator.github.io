@@ -1,213 +1,77 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>What's Your Engine</title>
-
-<meta name="description" content="러닝 능력을 자동차 엔진으로 분석하는 테스트">
-<meta name="keywords" content="running test, engine test, 러닝 테스트">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Find your creative engine. Photography, creativity, and growth.">
 <style>
-
-body{
-font-family:Arial;
-background:#111;
-color:white;
-text-align:center;
-padding:40px;
-}
-
-.menu{
-margin-bottom:30px;
-}
-
-.menu a{
-color:#ff3c00;
-margin:0 10px;
-text-decoration:none;
-font-weight:bold;
-}
-
-.container{
-max-width:500px;
-margin:auto;
-}
-
-input,select{
-width:100%;
-padding:12px;
-margin:10px 0;
-border-radius:8px;
-border:none;
-}
-
-button{
-padding:15px;
-width:100%;
-background:#ff3c00;
-border:none;
-border-radius:10px;
-color:white;
-font-size:18px;
-cursor:pointer;
-}
-
-.card{
-background:#1c1c1c;
-padding:25px;
-margin-top:30px;
-border-radius:15px;
-}
-
-.level{
-font-size:22px;
-color:#ff3c00;
-margin-bottom:10px;
-}
-
-.car{
-font-size:26px;
-margin-bottom:10px;
-}
-
-.engine{
-color:#aaa;
-margin-bottom:15px;
-}
-
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto;background:#f6f6f6;color:#222}
+header{background:#000;color:#fff;padding:20px;text-align:center}
+header h1{margin:0;font-size:28px}
+nav{margin-top:10px}
+nav a{color:#fff;text-decoration:none;margin:0 10px;font-size:14px;opacity:.9}
+nav a:hover{opacity:1}
+.container{max-width:900px;margin:auto;padding:30px}
+.hero{background:#fff;padding:40px;border-radius:10px;margin-bottom:30px;text-align:center}
+.hero h2{margin-top:0}
+.posts{display:grid;grid-template-columns:1fr;gap:20px}
+.post{background:#fff;padding:20px;border-radius:10px}
+.post h3{margin-top:0}
+.ads{margin:30px 0;padding:30px;background:#eaeaea;text-align:center;border-radius:10px;font-size:14px;color:#555}
+footer{text-align:center;padding:20px;font-size:13px;color:#777}
 </style>
-
 </head>
-
 <body>
 
-<div class="menu">
+<header>
+<h1>What's Your Engine</h1>
+<nav>
 <a href="index.html">Home</a>
 <a href="about.html">About</a>
-<a href="privacy.html">Privacy</a>
-</div>
+<a href="policy.html">Policy</a>
+</nav>
+</header>
 
 <div class="container">
 
-<h1>🏎 What's Your Engine</h1>
+<section class="hero">
+<h2>Discover Your Creative Engine</h2>
+<p>This site shares thoughts about creativity, photography, and growth.</p>
+</section>
 
-<p>당신의 러닝 능력을 자동차 엔진으로 분석합니다.</p>
+<div class="ads">
+Ad space (Google AdSense will be placed here)
+</div>
 
-<select id="gender">
-<option value="male">남자</option>
-<option value="female">여자</option>
-</select>
+<section class="posts">
 
-<input id="age" placeholder="나이">
+<div class="post">
+<h3>How Creativity Actually Starts</h3>
+<p>Many people wait for inspiration, but creativity usually begins with action. Start small, experiment, and momentum will follow.</p>
+</div>
 
-<input id="height" placeholder="키 (cm)">
+<div class="post">
+<h3>Photography and Observation</h3>
+<p>A good photographer doesn't only see objects — they see light, timing, and emotion.</p>
+</div>
 
-<input id="weight" placeholder="몸무게 (kg)">
+<div class="post">
+<h3>Your Engine Is Different</h3>
+<p>Everyone has a different engine that drives them. The key is discovering what naturally pushes you forward.</p>
+</div>
 
-<input id="time" placeholder="5km 기록 (분)">
+</section>
 
-<button onclick="analyze()">엔진 분석하기</button>
-
-<div id="result"></div>
+<div class="ads">
+Ad space (Second AdSense placement)
+</div>
 
 </div>
 
-<script>
-
-const cars = {
-
-Runner:[
-{name:"Toyota GR86",engine:"2.4L Boxer"},
-{name:"Mini Cooper S",engine:"2.0L Turbo"},
-{name:"BMW 330i",engine:"2.0L Turbo"}
-],
-
-Sport:[
-{name:"BMW M340i",engine:"3.0L Turbo"},
-{name:"Audi S4",engine:"3.0L Turbo"},
-{name:"Toyota Supra",engine:"3.0L Turbo"}
-],
-
-Racer:[
-{name:"BMW M3",engine:"3.0L Twin Turbo"},
-{name:"Porsche 911 Carrera",engine:"3.0L Twin Turbo"},
-{name:"Mercedes AMG C63",engine:"4.0L V8"}
-],
-
-Elite:[
-{name:"Porsche 911 GT3",engine:"4.0L NA"},
-{name:"Ferrari F8",engine:"3.9L Twin Turbo"},
-{name:"Lamborghini Huracan",engine:"5.2L V10"}
-],
-
-Monster:[
-{name:"Ferrari SF90",engine:"4.0L Hybrid"},
-{name:"Lamborghini Aventador",engine:"6.5L V12"},
-{name:"Dodge Challenger Hellcat",engine:"6.2L Supercharged"}
-]
-
-}
-
-function analyze(){
-
-const time = parseFloat(document.getElementById("time").value)
-
-let level=""
-
-if(time<=16){
-level="Monster"
-}
-else if(time<=18){
-level="Elite"
-}
-else if(time<=20){
-level="Racer"
-}
-else if(time<=23){
-level="Sport"
-}
-else{
-level="Runner"
-}
-
-const list = cars[level]
-
-const random = list[Math.floor(Math.random()*list.length)]
-
-document.getElementById("result").innerHTML = `
-
-<div class="card">
-
-<div class="level">LEVEL : ${level}</div>
-
-<div class="car">${random.name}</div>
-
-<div class="engine">${random.engine}</div>
-
-<p>Your running engine matches this machine.</p>
-
-<button onclick="share()">결과 공유</button>
-
-</div>
-
-`
-
-}
-
-function share(){
-
-const url = window.location.href
-
-navigator.clipboard.writeText(url)
-
-alert("링크가 복사되었습니다!")
-
-}
-
-</script>
+<footer>
+© 2026 What's Your Engine
+</footer>
 
 </body>
 </html>
