@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>What's Your Engine</title>
+
+<meta name="description" content="러닝 능력을 자동차 엔진으로 분석하는 테스트">
+<meta name="keywords" content="running test, engine test, 러닝 테스트">
+
+<style>
+
+body{
+font-family:Arial;
+background:#111;
+color:white;
+text-align:center;
+padding:40px;
+}
+
+.menu{
+margin-bottom:30px;
+}
+
+.menu a{
+color:#ff3c00;
+margin:0 10px;
+text-decoration:none;
+font-weight:bold;
+}
+
+.container{
+max-width:500px;
+margin:auto;
+}
+
+input,select{
+width:100%;
+padding:12px;
+margin:10px 0;
+border-radius:8px;
+border:none;
+}
+
+button{
+padding:15px;
+width:100%;
+background:#ff3c00;
+border:none;
+border-radius:10px;
+color:white;
+font-size:18px;
+cursor:pointer;
+}
+
+.card{
+background:#1c1c1c;
+padding:25px;
+margin-top:30px;
+border-radius:15px;
+}
+
+.level{
+font-size:22px;
+color:#ff3c00;
+margin-bottom:10px;
+}
+
+.car{
+font-size:26px;
+margin-bottom:10px;
+}
+
+.engine{
+color:#aaa;
+margin-bottom:15px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="menu">
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="privacy.html">Privacy</a>
+</div>
+
+<div class="container">
+
+<h1>🏎 What's Your Engine</h1>
+
+<p>당신의 러닝 능력을 자동차 엔진으로 분석합니다.</p>
+
+<select id="gender">
+<option value="male">남자</option>
+<option value="female">여자</option>
+</select>
+
+<input id="age" placeholder="나이">
+
+<input id="height" placeholder="키 (cm)">
+
+<input id="weight" placeholder="몸무게 (kg)">
+
+<input id="time" placeholder="5km 기록 (분)">
+
+<button onclick="analyze()">엔진 분석하기</button>
+
+<div id="result"></div>
+
+</div>
+
+<script>
+
+const cars = {
+
+Runner:[
+{name:"Toyota GR86",engine:"2.4L Boxer"},
+{name:"Mini Cooper S",engine:"2.0L Turbo"},
+{name:"BMW 330i",engine:"2.0L Turbo"}
+],
+
+Sport:[
+{name:"BMW M340i",engine:"3.0L Turbo"},
+{name:"Audi S4",engine:"3.0L Turbo"},
+{name:"Toyota Supra",engine:"3.0L Turbo"}
+],
+
+Racer:[
+{name:"BMW M3",engine:"3.0L Twin Turbo"},
+{name:"Porsche 911 Carrera",engine:"3.0L Twin Turbo"},
+{name:"Mercedes AMG C63",engine:"4.0L V8"}
+],
+
+Elite:[
+{name:"Porsche 911 GT3",engine:"4.0L NA"},
+{name:"Ferrari F8",engine:"3.9L Twin Turbo"},
+{name:"Lamborghini Huracan",engine:"5.2L V10"}
+],
+
+Monster:[
+{name:"Ferrari SF90",engine:"4.0L Hybrid"},
+{name:"Lamborghini Aventador",engine:"6.5L V12"},
+{name:"Dodge Challenger Hellcat",engine:"6.2L Supercharged"}
+]
+
+}
+
+function analyze(){
+
+const time = parseFloat(document.getElementById("time").value)
+
+let level=""
+
+if(time<=16){
+level="Monster"
+}
+else if(time<=18){
+level="Elite"
+}
+else if(time<=20){
+level="Racer"
+}
+else if(time<=23){
+level="Sport"
+}
+else{
+level="Runner"
+}
+
+const list = cars[level]
+
+const random = list[Math.floor(Math.random()*list.length)]
+
+document.getElementById("result").innerHTML = `
+
+<div class="card">
+
+<div class="level">LEVEL : ${level}</div>
+
+<div class="car">${random.name}</div>
+
+<div class="engine">${random.engine}</div>
+
+<p>Your running engine matches this machine.</p>
+
+<button onclick="share()">결과 공유</button>
+
+</div>
+
+`
+
+}
+
+function share(){
+
+const url = window.location.href
+
+navigator.clipboard.writeText(url)
+
+alert("링크가 복사되었습니다!")
+
+}
+
+</script>
+
+</body>
+</html>
