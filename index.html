@@ -1,55 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WhatsYourEngine</title>
-<link rel="stylesheet" href="./style.css">
+<title>What's Your Engine</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#f4f4f4;
+color:#222;
+}
+
+header{
+background:#111;
+color:white;
+padding:30px;
+text-align:center;
+}
+
+nav{
+background:#222;
+padding:15px;
+text-align:center;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin:0 15px;
+font-weight:bold;
+}
+
+nav a:hover{
+color:#ffd000;
+}
+
+.container{
+max-width:900px;
+margin:40px auto;
+background:white;
+padding:30px;
+border-radius:10px;
+box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+
+button{
+background:#111;
+color:white;
+border:none;
+padding:15px 25px;
+font-size:16px;
+border-radius:8px;
+cursor:pointer;
+margin-top:20px;
+}
+
+button:hover{
+background:#444;
+}
+
+.result{
+margin-top:30px;
+padding:20px;
+background:#f0f0f0;
+border-radius:10px;
+font-size:20px;
+font-weight:bold;
+}
+
+footer{
+background:#111;
+color:white;
+text-align:center;
+padding:25px;
+margin-top:50px;
+}
+
+</style>
 </head>
 
 <body>
 
 <header>
-<h1>WhatsYourEngine</h1>
-<p>Tools and guides for creators and makers</p>
+<h1>What's Your Engine</h1>
+<p>Find your running engine level</p>
 </header>
 
 <nav>
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="contact.html">Contact</a>
-<a href="privacy.html">Privacy Policy</a>
+<a href="#">Home</a>
+<a href="#">About</a>
+<a href="#">Contact</a>
 </nav>
 
 <div class="container">
 
-<h2>Welcome</h2>
+<h2>Running Engine Test</h2>
 
 <p>
-This website shares useful tools, ideas and resources for creators, builders and people who like making things on the internet.
+Click the button below to discover your engine type.
 </p>
 
-<p>
-More tools and guides will be added soon.
-</p>
+<button onclick="showEngine()">
+Find My Engine
+</button>
 
-<h3>Latest Posts</h3>
-
-<ul>
-<li>How to start building online tools</li>
-<li>Best simple tools for creators</li>
-<li>How websites make money with ads</li>
-</ul>
+<div class="result" id="result">
+Your engine will appear here
+</div>
 
 </div>
 
 <footer>
-<p>Contact: amifullmetal@gmail.com</p>
-<p>© 2026 WhatsYourEngine</p>
+
+<p>Contact : amifullmetal@gmail.com</p>
+<p>© 2026 What's Your Engine</p>
+
 </footer>
 
-<script src="./script.js"></script>
+<script>
+
+function showEngine(){
+
+const engines = [
+"BMW M3",
+"Porsche 911",
+"Ferrari 488",
+"Toyota GR86",
+"Mini Cooper S",
+"Audi RS5",
+"Mercedes C63 AMG"
+]
+
+const randomEngine =
+engines[Math.floor(Math.random()*engines.length)]
+
+document.getElementById("result").innerHTML =
+"You are : " + randomEngine
+
+}
+
+</script>
 
 </body>
 </html>
